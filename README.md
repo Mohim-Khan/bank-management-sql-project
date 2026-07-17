@@ -14,18 +14,6 @@ by applying SQL to extract meaningful insights that support data-driven decision
 
 ---
 
-# Business Problem
-
-Banks generate transactions every day across multiple branches and account types.
-Understanding customer behavior, transaction activity, and branch performance is
-essential for improving operational efficiency and making informed business
-decisions.
-
-This project analyzes banking data to identify transaction trends, customer
-activity, branch performance, and account type usage using SQL.
-
----
-
 # Project Objectives
 
 * Analyze customer and account information.
