@@ -12,8 +12,6 @@ was run.
 The objective of this project is to answer real-world banking business questions
 by applying SQL to extract meaningful insights that support data-driven decisions.
 
-![Bank ER Diagram](diagram/bank_er_diagram.png)
-
 ---
 
 # 🎯 Business Problem
@@ -218,88 +216,3 @@ with `IS NOT NULL` / `COALESCE` in the relevant analysis queries.
 * Account type summary
 * Monthly transaction summary
 * High-value customer summary
-
----
-
-# 📈 Business Questions
-
-This project answers **43 business questions** across 7 phases, including:
-
-* Which branch processes the highest transaction volume?
-* Which customers perform the highest number of transactions?
-* Which account type is the most popular?
-* Which transaction type is used most frequently?
-* Which customers spend above the average transaction amount?
-* Which branches generate the highest transaction value?
-* Which account types contribute the most to total transaction volume?
-* What does the monthly transaction trend look like?
-
----
-
-# 💡 Key Business Insights
-
-* **Main Branch Berlin leads all branches** in total transaction volume
-  (€12,647) — more than 7× the second-ranked branch (Leipzig, €1,661).
-* **One customer, Ellis Kirk, accounts for the largest share of transaction
-  volume** (€13,330 total), well ahead of the next customer (€2,013).
-* **€10,000** is the single highest transaction on record — an ATM withdrawal
-  far larger than the next-largest transaction (€721).
-* **Transfers dominate transaction activity**, making up 30 of 62 total
-  transactions, followed by ATM deposits (15) and ATM withdrawals (9).
-* **Savings accounts are the most popular account type** (9 of 43 accounts),
-  ahead of Online Banking (6) and Student accounts (5).
-* **Overdraft fees never occurred** in this dataset (0 transactions of that
-  type) — worth flagging for a real bank as either good customer discipline or
-  a sign the fee isn't being triggered/logged correctly.
-
----
-
-# 📂 Project Structure
-
-```text
-bank_project/
-├── README.md
-├── data/                                   # source CSVs
-│   ├── clients.csv
-│   ├── Account.csv
-│   ├── Account_types.csv
-│   ├── branches.csv
-│   ├── transaction.csv
-│   └── transaction_type.csv
-├── diagram/
-│   ├── bank_er_diagram.dot                 # Graphviz source
-│   └── bank_er_diagram.png                 # rendered ER diagram
-└── sql/
-    ├── 01_create_schema.sql                # DDL: tables, PKs, FKs, indexes
-    ├── 00_load_data.sql                    # data import (Linux/Mac)
-    ├── 00_load_data_windows.sql            # data import (Windows)
-    ├── load_data.py                        # Python/pandas alternative loader
-    ├── 02_phase1_basic_analysis.sql
-    ├── 03_phase2_customer_account_analysis.sql
-    ├── 04_phase3_transaction_analysis.sql
-    ├── 05_phase4_having_analysis.sql
-    ├── 06_phase5_subquery_analysis.sql
-    ├── 07_phase6_case_when_analysis.sql
-    ├── 08_phase7_cte_analysis.sql
-    └── 09_all_queries_combined.sql         # all 43 queries in one file
-```
-
----
-
-# 🚀 Tools & Technologies
-
-* MySQL 8.0
-* MySQL Workbench / MySQL CLI
-* Graphviz (ER Diagram)
-* Python (`mysql-connector-python`) — alternative data loader
-* Git & GitHub
-
----
-
-# 📌 Future Improvements
-
-* Add window functions (`RANK()`, `LAG()`, running totals) for deeper trend analysis
-* Build an interactive Power BI or Tableau dashboard on top of this schema
-* Extend with stored procedures and views for reusable reporting
-* Perform customer segmentation with Python (clustering on transaction behavior)
-* Scale the dataset up and re-tune the Phase 4 `HAVING` thresholds to match
